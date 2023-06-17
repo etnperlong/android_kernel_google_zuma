@@ -154,14 +154,14 @@ typedef struct {
 } sku_info_t;
 
 #if defined(BCM4383_CHIP_DEF)
-sku_info_t sku_table[] = {
+static sku_info_t sku_table[] = {
 	{ {"G8HHN"}, {"MMW"} },
 	{ {"G6GPR"}, {"ROW"} },
 	{ {"G576D"}, {"JPN"} },
 	{ {"GKV4X"}, {"NA"} }
 };
 #else
-sku_info_t sku_table[] = {
+static sku_info_t sku_table[] = {
 	{ {"G9S9B"}, {"MMW"} },
 	{ {"G8V0U"}, {"MMW"} },
 	{ {"GFQM1"}, {"MMW"} },
@@ -282,8 +282,8 @@ enum {
 #define HW_MAJOR  "major"
 #define HW_MINOR  "minor"
 
-char val_revision[MAX_HW_INFO_LEN] = "NA";
-char val_sku[MAX_HW_INFO_LEN] = "NA";
+static char val_revision[MAX_HW_INFO_LEN] = "NA";
+static char val_sku[MAX_HW_INFO_LEN] = "NA";
 
 enum hw_stage_attr {
 	DEV = 1,
@@ -298,7 +298,7 @@ typedef struct platform_hw_info {
 	uint8 avail_bmap;
 	char ext_name[MAX_FILE_COUNT][MAX_HW_EXT_LEN];
 } platform_hw_info_t;
-platform_hw_info_t platform_hw_info;
+static platform_hw_info_t platform_hw_info;
 
 static void
 dhd_set_platform_ext_name(char *hw_rev, char* hw_sku)

@@ -1035,7 +1035,7 @@ dhd_pktlog_filter_matched(dhd_pktlog_filter_t *filter, char *data, uint32 pktlog
 	}
 
 	for (i = 0; i < filter->list_cnt; i++) {
-		if (&filter->info[i] && filter->info[i].id && filter->info[i].enable) {
+		if (filter->info[i].id && filter->info[i].enable) {
 			szbts = filter->info[i].size_bytes;
 			offset = filter->info[i].offset;
 			mask = &filter->info[i].mask[0];
@@ -1447,8 +1447,8 @@ dhd_pktlog_dump_write(dhd_pub_t *dhdp, void *file, const void *user_buf, uint32 
 		}
 
 		bytes_user_data = sprintf(buf, "%s:%s:%02d\n", DHD_PKTLOG_FATE_INFO_FORMAT,
-				(report_ptr->tx_fate ? "Failure" : "Succeed"),
-				(report_ptr->tx_fate & !(TX_PKT_FATE_DRV_WAIT_UPDATE)));
+        	(report_ptr->tx_fate ? "Failure" : "Succeed"),
+        	((report_ptr->tx_fate & ~TX_PKT_FATE_DRV_WAIT_UPDATE) != 0));
 		write_frame_len = frame_len + bytes_user_data;
 		frame_len = (uint32)min(frame_len, DHD_PKT_LOGGING_DBGRING_MAX_SIZE);
 		captured_frame_len = frame_len + bytes_user_data;

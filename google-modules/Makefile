@@ -9,6 +9,7 @@ export KERNEL_SRC := $(srctree)/google-modules
 
 obj-y += amplifiers/cs35l41/
 obj-y += amplifiers/cs40l26/
+obj-y += amplifiers/tas256x/
 obj-y += aoc/
 obj-y += aoc/alsa/
 obj-y += aoc/usb/
@@ -31,6 +32,5 @@ obj-y += touch/common/
 obj-y += touch/fts/ftm5/
 obj-y += touch/goodix/
 obj-y += trusty/
-obj-y += uwb/qorvo/qm35/qm35s/
 obj-y += video/gchips/
-obj-y += wlan/bcm4398/
+obj-y += wlan/bcm4383/
